@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title th:text="|${movie.title} - MovieClub|">Tytuł filmu - MovieClub</title>
+    <title th:text="${movie.title}">Movie Title - MovieClub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
           integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -49,10 +49,10 @@
                      class="movie-summary-cover"
                 />
                 <div class="movie-summary-info">
-                    <h1 class="movie-summary-title">The Lord of the Rings</h1>
-                    <p class="movie-summary-original-title">Lord of the Rings</p>
-                    <p class="movie-summary-item">Year: 2001</p>
-                    <p class="movie-summary-item">Genre: <a href="#">Fantasy</a></p>
+                    <h1 class="movie-summary-title" th:text="${movie.title}">The Lord of the Rings</h1>
+                    <p class="movie-summary-original-title" th:text="${movie.originalTitle}">Lord of the Rings</p>
+                    <p class="movie-summary-item" th:text="${movie.releaseYear}">Year: 2001</p>
+                    <p class="movie-summary-item" th:text="${movie.genre}">Genre: <a href="#">Fantasy</a></p>
                     <p class="movie-summary-item">
                         The journey of a brave hobbit and his companions in search of the ring.
                     </p>

@@ -46,7 +46,7 @@
         <p class="list-description" th:text="${description}">Section description, for example, category description or homepage description</p>
         <ul class="movie-list" th:remove="all-but-first">
             <li class="movie-list-item" th:each="movie: ${movies}">
-                <a href="#" th:href="@{|/film/${movie.id}|}">
+                <a href="#" th:href="@{|/movies/${movie.id}|}">
                     <img src="../static/img/poster-placeholder.png"
                          th:src="@{/img/poster-placeholder.png}"
                          alt="movie title"
@@ -55,7 +55,7 @@
                 <div class="movie-list-item-card">
                     <div class="movie-list-item-content">
                         <h3 class="movie-list-item-title">
-                            <a href="#" th:href="@{|/film/${movie.id}|}" th:text="${movie.title}">Movie Title</a>
+                            <a href="#" th:href="@{|/movies/${movie.id}|}" th:text="${movie.title}">Movie Title</a>
                         </h3>
                         <h4 th:text="${movie.originalTitle}">Original Movie Title</h4>
                         <p th:text="${movie.releaseYear}">1999</p>
