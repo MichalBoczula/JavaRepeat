@@ -45,24 +45,27 @@
         <section class="movie">
             <div class="movie-summary">
                 <img src="../static/img/poster-placeholder.png"
+                     th:src="@{/img/poster-placeholder.png}"
                      alt="movie title"
+                     th:alt="${movie.title}"
                      class="movie-summary-cover"
                 />
                 <div class="movie-summary-info">
-                    <h1 class="movie-summary-title" th:text="${movie.title}">The Lord of the Rings</h1>
-                    <p class="movie-summary-original-title" th:text="${movie.originalTitle}">Lord of the Rings</p>
-                    <p class="movie-summary-item" th:text="${movie.releaseYear}">Year: 2001</p>
-                    <p class="movie-summary-item" th:text="${movie.genre}">Genre: <a href="#">Fantasy</a></p>
-                    <p class="movie-summary-item">
-                        The journey of a brave hobbit and his companions in search of the ring.
+                    <h1 class="movie-summary-title" th:text="${movie.title}"></h1>
+                    <p class="movie-summary-original-title" th:text="${movie.originalTitle}"></p>
+                    <p class="movie-summary-item" th:text="|Year: ${movie.releaseYear}|"></p>
+                    <p class="movie-summary-item">Genre: <a href="#"
+                                                            th:href="@{|/genre/${movie.genre}|}"
+                                                            th:text="${movie.genre}">Fantasy</a>
                     </p>
+                    <p class="movie-summary-item" th:text="${movie.shortDescription}"></p>
                 </div>
             </div>
             <div class="movie-rating-container movie-section">
                 <h2 class="movie-section-heading">Rating</h2>
                 <div>
                     <p class="movie-rating-value" th:text="${avgRating}">4.0</p>
-                    <p>Number of ratings: 134</p>
+                    <p style="text-align: center">Number of ratings: 134</p>
                 </div>
                 <form action="#" class="movie-rating-form">
                     <p>Your rating</p>
@@ -82,14 +85,12 @@
             <h2 class="movie-section-heading">Trailer</h2>
             <iframe width="560" height="315" class="movie-trailer"
                     src="https://www.youtube.com/embed/V75dMMIW2B4"
+                    th:src="|https://www.youtube.com/embed/${movie.youtubeTrailerId}|"
                     frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </section>
         <section class="movie-section">
             <h2 class="movie-section-heading">Description</h2>
-            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                odio, vestibulum in vulputate at,
-                tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in
-                faucibus.</p>
+            <p th:text="${movie.description}"></p>
         </section>
     </main>
 </div>
