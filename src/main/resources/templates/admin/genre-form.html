@@ -45,14 +45,14 @@
     </p>
   </header>
   <main class="main-content">
-    <p class="notification-bar" th:if="${notification}" th:text="${notification}">
-      Notification
-    </p>
-    <h2 class="list-heading">Admin Panel</h2>
-    <ul class="list-border">
-      <li><a href="#" th:href="@{/admin/add-movie}">Add Movie</a></li>
-      <li><a href="#" th:href="@{/admin/add-genre}">Add Genre</a></li>
-    </ul>
+    <h2 class="list-heading">Add New Movie Genre</h2>
+    <form action="" method="post" class="mc-form" th:object="${genre}">
+      <label for="genreName">Name</label>
+      <input type="text" id="genreName" placeholder="e.g. Horror" th:field="*{name}">
+      <label for="movieShortDescription">Description - max 500 characters</label>
+      <textarea id="movieShortDescription" rows="5" th:field="*{description}"></textarea>
+      <button type="submit">Add</button>
+    </form>
   </main>
 </div>
 </body>

@@ -45,14 +45,29 @@
     </p>
   </header>
   <main class="main-content">
-    <p class="notification-bar" th:if="${notification}" th:text="${notification}">
-      Notification
-    </p>
-    <h2 class="list-heading">Admin Panel</h2>
-    <ul class="list-border">
-      <li><a href="#" th:href="@{/admin/add-movie}">Add Movie</a></li>
-      <li><a href="#" th:href="@{/admin/add-genre}">Add Genre</a></li>
-    </ul>
+    <h2 class="list-heading">Add New Movie</h2>
+    <form action="" method="post" enctype="multipart/form-data" class="mc-form" th:object="${movie}">
+      <label for="title">Title</label>
+      <input type="text" id="title" placeholder="Example title" th:field="*{title}">
+      <label for="originalTitle">Original Title</label>
+      <input type="text" id="originalTitle" placeholder="Example original title" th:field="*{originalTitle}">
+      <label for="releaseYear">Release Year</label>
+      <input type="number" id="releaseYear" placeholder="2019" th:field="*{releaseYear}">
+      <label for="genre">Genre</label>
+      <select id="genre" th:field="*{genre}" required>
+        <option value="" hidden>Select genre</option>
+        <option th:each="genre: ${genres}" th:value="${genre.name}" th:text="${genre.name}"></option>
+      </select>
+      <label for="promoted">Promote on homepage?</label>
+      <input id="promoted" type="checkbox" th:field="*{promoted}">
+      <label for="trailerId">YouTube Trailer ID</label>
+      <input type="text" id="trailerId" placeholder="abcdefgh" th:field="*{youtubeTrailerId}">
+      <label for="shortDescription">Short Description - max 200 characters</label>
+      <textarea id="shortDescription" rows="5" th:field="*{shortDescription}"></textarea>
+      <label for="description">Full Description</label>
+      <textarea id="description" rows="10" th:field="*{description}"></textarea>
+      <button type="submit">Add</button>
+    </form>
   </main>
 </div>
 </body>
