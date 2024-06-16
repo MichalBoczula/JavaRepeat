@@ -64,8 +64,11 @@
                         <p th:text="${movie.releaseYear}">1999</p>
                     </div>
                     <div class="movie-list-item-rating">
-                        <i class="fas fa-star"></i>
-                        <span>8.7</span>
+                        <div class="movie-list-item-rating">
+                            <i class="fas fa-star"></i>
+                            <span th:if="${movie.ratingCount}" th:text="${#numbers.formatDecimal(movie.avgRating, 1, 1)}">1</span>
+                            <span th:if="!${movie.ratingCount}">No ratings</span>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -85,7 +88,8 @@
                     </div>
                     <div class="movie-list-item-rating">
                         <i class="fas fa-star"></i>
-                        <span>8.7</span>
+                        <span th:if="${movie.ratingCount}" th:text="${#numbers.formatDecimal(movie.avgRating, 1, 1)}">1</span>
+                        <span th:if="!${movie.ratingCount}">No ratings</span>
                     </div>
                 </div>
             </li>
@@ -105,7 +109,8 @@
                     </div>
                     <div class="movie-list-item-rating">
                         <i class="fas fa-star"></i>
-                        <span>8.7</span>
+                        <span th:if="${movie.ratingCount}" th:text="${#numbers.formatDecimal(movie.avgRating, 1, 1)}">1</span>
+                        <span th:if="!${movie.ratingCount}">No ratings</span>
                     </div>
                 </div>
             </li>
