@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MovieClub</title>
+  <title>Admin Panel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous"
-        referrerpolicy="no-referrer" />
+        referrerpolicy="no-referrer"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
@@ -45,18 +45,10 @@
     </p>
   </header>
   <main class="main-content">
-    <h2 class="list-heading">Movie Genres</h2>
-    <p class="list-description">
-      Below you will find a list of movie genres in our catalog.
-      Choose something for yourself.
-    </p>
+    <h2 class="list-heading">Admin Panel</h2>
     <ul class="list-border">
-      <li th:each="genre: ${genres}">
-        <a th:href="@{|/genre/${genre.name}|}"
-           th:text="${genre.name}">
-          Horror
-        </a>
-      </li>
+      <li><a href="#" th:href="@{/admin/add-movie}">Add Movie</a></li>
+      <li><a href="#" th:href="@{/admin/add-genre}">Add Genre</a></li>
     </ul>
   </main>
 </div>
