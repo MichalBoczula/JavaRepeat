@@ -2,13 +2,14 @@ package com.movieapp.web;
 
 import com.movieapp.persistance.movie.MovieDto;
 import com.movieapp.persistance.movie.MovieService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class HomeController {
@@ -29,8 +30,9 @@ public class HomeController {
 
     @GetMapping("movies/{id}")
     public String getMovie(@PathVariable long id, Model model) {
-        Optional<MovieDto> optionalMovie = movieService.findMovieById(id);
-        optionalMovie.ifPresent(movie -> model.addAttribute("movie", movie));
+        MovieDto movie = movieService.findMovieById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        model.addAttribute("movie", movie);
         return "movie";
     }
 }
